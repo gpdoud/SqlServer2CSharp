@@ -1,6 +1,7 @@
 ﻿using System;
 
-using SqlServer2CSharpLib;
+using PrsLib;
+using PrsLib.User;
 
 namespace SqlServer2CSharp {
 
@@ -8,12 +9,24 @@ namespace SqlServer2CSharp {
 
         static void Main(string[] args) {
 
-            var ss = new SqlServer();
-            var ok = ss.Connect("localhost", "sqlexpress", "EdDb");
+            var conn = new Connection("localhost", "PrsDb");
+            conn.Connect();
 
-            var students = ss.ExecuteQuery("SELECT * From Student;");
+            var usersController = new UsersController(conn);
+            var user = new User {
+                Id = 0, Username = "xxxx", Password = "xx", Firstname = "xx", Lastname = "xx",
+                Phone = "xx", Email = "xx", IsAdmin = true, IsReviewer = true
+            };
+            var recsAffected = usersController.Insert(user);
+            var id = usersController.GetLastGeneratedId();
+            user = usersController.GetUser(id);
+            user.Username += "x";
+            recsAffected = usersController.Update(user);
+            recsAffected = usersController.Delete(user.Id);
+            var users = usersController.GetUsers();
 
-            ss.Disconnect();
+            conn.Disconnect();
+
         }
     }
 }
