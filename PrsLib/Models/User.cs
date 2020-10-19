@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PrsLib.User {
+namespace PrsLib.Models {
     
     public class User {
 

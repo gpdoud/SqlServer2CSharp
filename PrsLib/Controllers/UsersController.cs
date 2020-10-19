@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using PrsLib.Models;
 
 using Microsoft.Data.SqlClient;
 
-namespace PrsLib.User {
+namespace PrsLib.Controllers {
     
     public class UsersController {
 

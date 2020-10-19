@@ -1,7 +1,7 @@
 ﻿using System;
-
 using PrsLib;
-using PrsLib.User;
+using PrsLib.Models;
+using PrsLib.Controllers;
 
 namespace SqlServer2CSharp {
 
